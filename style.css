@@ -1,110 +1,139 @@
 * {
-  margin: 0 auto; /** dış kenar//  CSS margin özelliği elementin dışında boşluk oluşturmak için kullanılır. */
-  padding: 0; /** iç kenar // CSS'te padding özelliğini içeriğin etrafında boşluk oluşturmak için kullanırız */
-  box-sizing: border-box; /**  CSS'te box-sizing özelliği bir HTML öğesinin width ve height değerini etkilemeden padding ve borde*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.6rem;
 }
 
 .container {
-  display: flex; /** display: flex; kullanılarak kapsayıcı içerisindeki öğelere artık esneklik vermeye başlayabiliriz. */
-  flex-direction: row; /**  flex-direction: row ile item'lar sırasıyla soldan sağa hizalanır*/
-  flex-wrap: wrap; /**  flex-wrap. Varsayılan olarak esnek öğeler tek bir satıra sığmaya çalışırlar. Gerektiğinde birden fazla satıra yaymak için bu özelliği kullanabilirsiniz*/
-  justify-content: center; /**Bir öğeyi esnek kutu içerisinde hem ana-eksende hem de çapraz eksende ortalamak için alig-items ya da align-content özelliği ile birlikte kullanılabilir.*/
-  align-content: center;
-  width: 100%; /*** GENİŞLİK */
-  width: 1440px;
+  background-color: rgb(240, 240, 240);
 }
 
-.header {
+header {
   display: flex;
-  justify-content: space-between; /**    Her hat arasındaki boşluklar birbirine eşit olur.  */
-  padding: 1rem;
-  /* text-align: center; */
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 10% 0;
+  column-gap: 15rem;
+}
+
+header .text {
+  width: 100%;
+  max-width: 35rem;
+}
+
+.members {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 7.5% 5rem;
+}
+
+.members .member {
+  margin: auto;
+  transition: all 1s ease-in-out;
+}
+
+.members .member:hover {
+  transform: scale(1.05);
+}
+
+.members .member .photo-job {
+  display: flex;
+  /* gap: 1rem; */
   align-items: flex-start;
 }
 
-.right-header {
-  width: 35%;
-}
-.left-header {
-  width: 40%;
-}
-
-.images {
-  display: grid; /**  Tanımlanan grid değeri taşıyıcı içindeki elemanları satır ve sütun şeklinde konumlandırmayı sağlar. Böylece alt elemanlar taşıyıcı içerisinde kolay bir şekilde konumlanabilir hale gelir.*/
-  grid-template-columns: repeat(
-    3,
-    1fr
-  ); /**içindeki tekrarlayan yapıları teke indiren bir kısayoldur.*/
-  align-items: center; /** Bu özellik ise justify-content‘in yatay eksende yaptığı şeyleri dikey eksende yapmaya yarar. */
-  justify-content: center; /**  Flex özelliğine sahip olan bir kapsayıcının yatay eksende nasıl hizalanacağını ayarlar.*/
-  gap: 1rem;
-  /**gap CSS özelliği flexbox, grid ve multi-column yapılarda esnek öğeler arasındaki boşluğu ayarlamak için kullanılmaktadır. Gap kelimesi boşluk ve açıklık anlamına gelmektedir. Grid CSS ızgara görünümü ve flexbox özellikleri ile kullanılabilir.*/
-}
-
-.img {
-  width: 300px;
-}
-
-.imgdown {
-  margin-top: 10rem;
-  width: 300px;
-}
-
-.images img {
-  border-radius: 5px;
-  box-shadow: 0px 0px 9px black;
-}
-
-.dik {
-  transform: rotate(
-    90deg
-  ); /**  Rotate parametresi, adından da anlaşılacağı üzere nesneyi döndürmek için kullanılan bir parametre türüdür. Nesnenin kaç derece döneceğini “deg” türünde belirtmekteyiz.*/
-  right: 0rem;
-  margin-top: 35px;
-  font-size: 50%;
-  position: absolute; /**  position:absolute; özelliği olan bir eleman en yakın pozisyon değeri relative olan elemana göre kendini konumlandırır. Eğer position:relative; özelliğine sahip bir ebeveyni yoksa belgeye göre kendini konumlandıracaktır*/
-}
-
-.yazı {
+.members .member .photo-job img {
   width: 100%;
-  position: relative; /**   CSS'de "position:relative" özelliği, normal konumuna göre konumlandırılmıştır..**/
+  max-width: 30rem;
+  margin-bottom: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-@media screen and (max-width: 990px) {
-  .container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    width: 100%;
-  }
+.members .member .photo-job .job {
+  position: relative;
+}
 
-  .images {
-    display: grid;
+.members .member .photo-job .job p {
+  transform: rotate(90deg);
+  position: absolute;
+  left: -5.5rem;
+  top: 6.5rem;
+  width: 15rem;
+}
+
+.members .medium {
+  padding-top: 20rem;
+}
+
+@media (max-width: 1400px) {
+  .members {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .media {
-    margin-top: 50%;
+  .member:nth-child(4) {
+    padding-top: 20rem;
   }
-  .right-header {
-    width: 80%;
+  .member:nth-child(5) {
+    padding-top: 0;
   }
-  .left-header {
-    width: 80%;
-    text-align: center;
-  }
-  .grif {
-    margin-top: 0;
+
+  .member:last-child {
+    padding-top: 20rem;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .images {
-    margin: 2rem;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
+@media (max-width: 992px) {
+  header {
+    flex-direction: column;
+    row-gap: 2rem;
+    text-align: center;
+  }
+
+  .members .member .photo-job img {
+    max-width: 25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .members {
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+    padding-top: 5rem;
+  }
+
+  .member:nth-child(2) {
+    padding-top: 0;
+  }
+
+  .member:nth-child(4) {
+    padding-top: 0;
+  }
+
+  .member:last-child {
+    padding-top: 0;
+  }
+
+  .members .member .photo-job img {
+    max-width: 35rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .members .member .photo-job img {
+    max-width: 30rem;
+  }
+
+  html {
+    font-size: 60%;
   }
 }
